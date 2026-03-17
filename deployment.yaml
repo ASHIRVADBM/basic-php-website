@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: phpapp
-        image: yourusername/phpapp:v1
+        image: ashirvadbm/phpapp:v1
         ports:
         - containerPort: 80
         imagePullPolicy: Always
