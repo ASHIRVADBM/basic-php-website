@@ -2,12 +2,14 @@ FROM ubuntu:20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i 's|http://archive.ubuntu.com/|http://us.archive.ubuntu.com/|g' \
-    /etc/apt/sources.list
+RUN sed -i 's|http://archive.ubuntu.com/|http://us.archive.ubuntu.com/|g' /etc/apt/sources.list
 
 RUN apt-get update -y && \
     apt-get install -y apache2 php libapache2-mod-php && \
     apt-get clean
+
+# Remove default Apache page
+RUN rm -f /var/www/html/index.html
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
