@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpapp-deployment
+  labels:
+    app: phpapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: phpapp
+  template:
+    metadata:
+      labels:
+        app: phpapp
+    spec:
+      containers:
+      - name: phpapp
+        image: yourusername/phpapp:v1
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
